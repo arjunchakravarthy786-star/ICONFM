@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Insights & Outcomes — ICONFM</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+<!-- NAVIGATION BAR -->
+<header class="fixed w-full z-40 bg-white/90 backdrop-blur-sm border-b shadow-sm">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-12 h-12 rounded-full bg-blue-800 flex items-center justify-center text-white font-bold transition-transform">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/52/Indian_Institute_of_Technology%2C_Patna.svg/1200px-Indian_Institute_of_Technology%2C_Patna.svg.png" alt="IITP">
+      </div>
+      <div class="hidden sm:block">
+        <div class="text-sm font-semibold">ICONFM 2025</div>
+        <div class="text-xs text-gray-600">IIT Patna</div>
+      </div>
+    </a>
+
+    <!-- Desktop links -->
+    <nav class="hidden md:flex items-center gap-1">
+      <a href="index.html" class="nav-link flex items-center gap-1 px-3 py-2 rounded hover:bg-blue-600 hover:text-white">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9-1.5 1.5L12 5 4.5 13.5z"/><path d="M12 22V12h4v10h-4zm-4 0V12h4v10H8z"/></svg>
+        <span>Home</span>
+      </a>
+      <a href="committee.html" class="nav-link flex items-center gap-1 px-3 py-2 rounded hover:bg-blue-600 hover:text-white">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M16 11a4 4 0 100-8 4 4 0 000 8zM4 11a4 4 0 100-8 4 4 0 000 8zM4 13a6 6 0 00-6 6v2h14v-2a6 6 0 00-6-6zm12 0a6 6 0 016 6v2h-6v-2a6 6 0 00-6-6h6z"/></svg>
+        <span>Committee</span>
+      </a>
+      <a href="insights.html" class="nav-link flex items-center gap-1 px-3 py-2 rounded hover:bg-blue-600 hover:text-white">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4 12h2v8H4v-8zm6-4h2v12h-2V8zm6-6h2v18h-2V2z"/></svg>
+        <span>Outcomes</span>
+      </a>
+      <a href="registration.html" class="nav-link flex items-center gap-1 px-3 py-2 bg-blue-800 text-white rounded hover:scale-[1.02] transition">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M15 12h6m-3-3v6M7 6a4 4 0 110 8 4 4 0 010-8zM3 21v-2a4 4 0 014-4h4"/></svg>
+        <span>Register</span>
+      </a>
+      <a href="login.html" class="nav-link flex items-center gap-1 px-3 py-2 border rounded hover:bg-blue-600 hover:text-white">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17 10.5v3l4 3V7.5l-4 3z"/><path d="M3 5a2 2 0 012-2h10a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"/></svg>
+        <span>Conference Hall</span>
+      </a>
+    </nav>
+
+    <!-- Mobile hamburger -->
+    <button id="mobile-menu-btn" class="md:hidden px-3 py-2 border rounded">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-2 bg-white border-t">
+    <a href="index.html" class="block px-3 py-2 rounded hover:bg-blue-100">Home</a>
+    <a href="committee.html" class="block px-3 py-2 rounded hover:bg-blue-100">Committee</a>
+    <a href="insights.html" class="block px-3 py-2 rounded hover:bg-blue-100">Outcomes</a>
+    <a href="registration.html" class="block px-3 py-2 rounded bg-blue-800 text-white">Register</a>
+    <a href="login.html" class="block px-3 py-2 rounded border hover:bg-blue-100">Conference Hall</a>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  mobileBtn?.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // Highlight active link
+  const links = document.querySelectorAll('nav a');
+  links.forEach(link => {
+    if(link.href === window.location.href) link.classList.add('bg-blue-700','text-white');
+  });
+</script>
+
+
+<main class="pt-20 max-w-6xl mx-auto px-4 py-8">
+  <h1 class="text-2xl font-bold text-blue-900">Insights & Outcomes</h1>
+  <div id="stats" class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <!-- stats cards injected by app.js -->
+  </div>
+
+  <h2 class="mt-8 text-xl font-semibold">Match Timeline</h2>
+  <div id="timeline" class="mt-4">
+    <!-- timeline injected by app.js -->
+  </div>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-firestore-compat.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "sponsors": [
+    {"id":"s1","name":"Govt Lab","logo":"https://via.placeholder.com/200x80?text=Govt+Lab"},
+    {"id":"s2","name":"Materials Co","logo":"https://via.placeholder.com/200x80?text=Materials+Co"},
+    {"id":"s3","name":"Photonics Inc","logo":"https://via.placeholder.com/200x80?text=Photonics"}
+  ],
+  "committee": [
+    {"id":"c1","name":"Prof. A. Researcher","role":"Chair","photo":"https://via.placeholder.com/300?text=Prof+A"},
+    {"id":"c2","name":"Dr. B. Scientist","role":"Co-chair","photo":"https://via.placeholder.com/300?text=Dr+B"},
+    {"id":"c3","name":"Dr. C. Member","role":"Organizing Secretary","photo":"https://via.placeholder.com/300?text=Dr+C"}
+  ]
+}

@@ -1,0 +1,160 @@
+/* small customizations beyond Tailwind */
+:root{
+  --iip-blue:#0b4da1;
+  --iip-gold:#c5941d;
+}
+
+/* gold button utility for inline use */
+.bg-gold-500{ background:var(--iip-gold); color:white; }
+
+#hero-logo.shrink {
+  width:48px !important;
+  height:48px !important;
+  transform: translate(-8px,-8px) scale(0.9) !important;
+  position: fixed;
+  top: 10px;
+  left: 12px;
+  z-index: 60;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.2);
+  transition: all 400ms ease;
+}
+#hero-content.shrift { opacity:0; transform: translateY(-10px) scale(0.97);}
+
+/* make focus outlines visible for accessibility */
+:focus { outline: 3px solid rgba(11,77,161,0.25); outline-offset: 2px; }
+
+
+
+/* -------------------------------
+   Global Style
+--------------------------------*/
+body {
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  background: #ffffff;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Smooth fade-in animation */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* -------------------------------
+   Header — Elegant Shadow & Blur
+--------------------------------*/
+header {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.07);
+  backdrop-filter: blur(12px);
+}
+
+/* Navigation links */
+header a {
+  color: #1e3a8a; /* IIT Patna Blue */
+  transition: 0.2s ease;
+}
+header a:hover {
+  color: #0f1f4b;
+}
+
+/* -------------------------------
+   Committee Card Grid
+--------------------------------*/
+#committee-grid {
+  margin-top: 24px;
+}
+
+/* Committee card */
+.committee-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.committee-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
+}
+
+/* Committee name */
+.committee-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+/* Committee role (subtext) */
+.committee-role {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+/* Subtle divider */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #d4d4d4, transparent);
+  margin: 12px 0;
+}
+
+/* -------------------------------
+   Footer
+--------------------------------*/
+footer {
+  padding: 20px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* -------------------------------
+   Buttons — Elegant Academic
+--------------------------------*/
+.btn-primary {
+  background: #1e3a8a;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  transition: 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #14275d;
+}
+
+/* -------------------------------
+   Smooth Shadows & Depth
+--------------------------------*/
+.shadow-soft {
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+}
+
+/* -------------------------------
+   Mobile Friendly
+--------------------------------*/
+@media (max-width: 640px) {
+  header div {
+    padding: 10px 14px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .committee-card {
+    padding: 16px;
+  }
+}
+
