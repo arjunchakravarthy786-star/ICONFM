@@ -1,9 +1,11 @@
 /* ======================================================
-   ICONFM 2025 — Combined app.js
-   All features: Firebase, committee, sponsors, registration, login, hall, insights
+   ICONFM 2025 — Main Application Script
+   Features: Firebase, Committee, Sponsors, Registration, Login, Hall, Insights
 ====================================================== */
 
-/* ---------- FIREBASE CONFIG ---------- */
+/* ======================================================
+   FIREBASE CONFIGURATION
+====================================================== */
 const FIREBASE_CONFIG = {
   apiKey: "",
   authDomain: "",
@@ -26,7 +28,7 @@ if (FIREBASE_CONFIG.apiKey) {
     console.warn("Firebase init failed:", e);
   }
 } else {
-  console.warn("Firebase config missing — running on SAMPLE data only.");
+  console.warn("Firebase config missing — running on sample data only.");
 }
 
 /* ---------- SAMPLE DATA (Local fallback) ---------- */
@@ -362,4 +364,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
   if(el('#login-form')) initLogin();
   if(el('#hall-content')) checkHallAccess();
   if(el('#stats')) loadInsights();
+  
+  // Refresh sponsors button handler
+  const refreshBtn = el('#refresh-sponsors');
+  if(refreshBtn) {
+    refreshBtn.addEventListener('click', () => {
+      loadSponsors();
+    });
+  }
 });
