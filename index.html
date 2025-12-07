@@ -5,18 +5,20 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ICONFM 2025 — IIT Patna | Collaboration Platform</title>
   <meta name="description" content="International Conference on Organic and Functional Materials for Light and Energy — Collaboration Platform. Department of Chemistry, IIT Patna." />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="styles.css">
+
+<!-- Built Tailwind CSS -->
+<link rel="stylesheet" href="dist/output.css">
+
 </head>
 <body class="antialiased bg-white text-gray-800">
 
-  <!-- Navigation Bar -->
+  <!-- NAVIGATION BAR -->
   <header class="fixed w-full z-40 bg-white/90 backdrop-blur-sm border-b shadow-sm">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
       <!-- Logo -->
       <a href="index.html" class="flex items-center gap-3">
-        <div class="w-12 h-12 rounded-full bg-blue-800 flex items-center justify-center text-white font-bold transition-transform">
-          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/52/Indian_Institute_of_Technology%2C_Patna.svg/1200px-Indian_Institute_of_Technology%2C_Patna.svg.png" alt="IIT Patna Logo">
+        <div class="w-12 h-12 rounded-full bg-blue-800 flex items-center justify-center text-white font-bold transition-transform overflow-hidden">
+          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/52/Indian_Institute_of_Technology%2C_Patna.svg/1200px-Indian_Institute_of_Technology%2C_Patna.svg.png" alt="IIT Patna logo" class="w-full h-full object-contain">
         </div>
         <div class="hidden sm:block">
           <div class="text-sm font-semibold">ICONFM 2025</div>
@@ -24,108 +26,176 @@
         </div>
       </a>
 
-      <!-- Desktop Navigation -->
+      <!-- Desktop links -->
       <nav class="hidden md:flex items-center gap-1">
         <a href="index.html" class="nav-link flex items-center gap-1 px-3 py-2 rounded hover:bg-blue-600 hover:text-white">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9-1.5 1.5L12 5 4.5 13.5z"/><path d="M12 22V12h4v10h-4zm-4 0V12h4v10H8z"/></svg>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M3 12l9-9 9 9-1.5 1.5L12 5 4.5 13.5z" />
+            <path d="M12 22V12h4v10h-4zm-4 0V12h4v10H8z" />
+          </svg>
           <span>Home</span>
         </a>
-        <a href="committee.html" class="nav-link flex items-center gap-1 px-3 py-2 rounded hover:bg-blue-600 hover:text-white">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M16 11a4 4 0 100-8 4 4 0 000 8zM4 11a4 4 0 100-8 4 4 0 000 8zM4 13a6 6 0 00-6 6v2h14v-2a6 6 0 00-6-6zm12 0a6 6 0 016 6v2h-6v-2a6 6 0 00-6-6h6z"/></svg>
-          <span>Committee</span>
-        </a>
+      
         <a href="insights.html" class="nav-link flex items-center gap-1 px-3 py-2 rounded hover:bg-blue-600 hover:text-white">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4 12h2v8H4v-8zm6-4h2v12h-2V8zm6-6h2v18h-2V2z"/></svg>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M4 12h2v8H4v-8zm6-4h2v12h-2V8zm6-6h2v18h-2V2z" />
+          </svg>
           <span>Outcomes</span>
         </a>
         <a href="registration.html" class="nav-link flex items-center gap-1 px-3 py-2 bg-blue-800 text-white rounded hover:scale-[1.02] transition">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M15 12h6m-3-3v6M7 6a4 4 0 110 8 4 4 0 010-8zM3 21v-2a4 4 0 014-4h4"/></svg>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M15 12h6m-3-3v6M7 6a4 4 0 110 8 4 4 0 010-8zM3 21v-2a4 4 0 014-4h4" />
+          </svg>
           <span>Register</span>
         </a>
+          <a href="committee.html" class="nav-link flex items-center gap-1 px-3 py-2 rounded hover:bg-blue-600 hover:text-white">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M16 11a4 4 0 100-8 4 4 0 000 8zM4 11a4 4 0 100-8 4 4 0 000 8zM4 13a6 6 0 00-6 6v2h14v-2a6 6 0 00-6-6zm12 0a6 6 0 016 6v2h-6v-2a6 6 0 00-6-6h6z" />
+          </svg>
+          <span>Committee</span>
+        </a>
         <a href="login.html" class="nav-link flex items-center gap-1 px-3 py-2 border rounded hover:bg-blue-600 hover:text-white">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17 10.5v3l4 3V7.5l-4 3z"/><path d="M3 5a2 2 0 012-2h10a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"/></svg>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17 10.5v3l4 3V7.5l-4 3z" />
+            <path d="M3 5a2 2 0 012-2h10a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" />
+          </svg>
           <span>Conference Hall</span>
         </a>
       </nav>
 
-      <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" class="md:hidden px-3 py-2 border rounded">
+      <!-- Mobile hamburger -->
+      <button id="mobile-menu-btn" class="md:hidden px-3 py-2 border rounded" aria-label="Toggle navigation">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
     </div>
 
-    <!-- Mobile Menu -->
+    <!-- Mobile menu -->
     <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-2 bg-white border-t">
       <a href="index.html" class="block px-3 py-2 rounded hover:bg-blue-100">Home</a>
-      <a href="committee.html" class="block px-3 py-2 rounded hover:bg-blue-100">Committee</a>
+      
       <a href="insights.html" class="block px-3 py-2 rounded hover:bg-blue-100">Outcomes</a>
       <a href="registration.html" class="block px-3 py-2 rounded bg-blue-800 text-white">Register</a>
       <a href="login.html" class="block px-3 py-2 rounded border hover:bg-blue-100">Conference Hall</a>
+      <a href="committee.html" class="block px-3 py-2 rounded hover:bg-blue-100">Committee</a>
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- MAIN CONTENT -->
   <main class="pt-24">
-    <section id="hero" class="relative min-h-[60vh] md:min-h-[72vh] flex items-center">
-      <div class="absolute inset-0 overflow-hidden">
-        <div class="w-full h-full bg-gradient-to-br from-blue-50 to-white">
-          <img src="https://academics.iitp.ac.in/images/homeslider/2.jpg?q=80&w=1920&auto=format&fit=crop" alt="IIT Patna Campus" class="w-full h-full object-cover opacity-70">
+    <!-- HERO -->
+   <section id="hero" class="relative min-h-[60vh] md:min-h-[72vh] flex items-center overflow-hidden">
+
+  <!-- SLIDER CONTAINER -->
+<div id="hero-slider" 
+     class="absolute inset-0 flex transition-transform duration-[1200ms] ease-in-out bg-black">
+  <img src="https://academics.iitp.ac.in/images/homeslider/2.jpg"
+       class="w-full h-full object-contain" alt="Slide 1">
+
+  <img src="../assets/templates/example-slide-1.jpg"
+       class="w-full h-full object-contain" alt="Slide 2">
+
+  <img src="../assets/templates/hed4.jpg"
+       class="w-full h-full object-contain" alt="Slide 3">
+</div>
+
+
+
+  <!-- HERO TEXT + LOGO -->
+  <div class="relative z-10 max-w-6xl mx-auto px-4 py-12">
+    <div class="flex flex-col md:flex-row items-center gap-8">
+      <div id="hero-content" class="flex-1 transform transition-all duration-500">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-blue-900 drop-shadow">
+          International Conference on <br class="hidden md:block">
+          Organic &amp; Functional Materials for Light and Energy
+        </h1>
+        <p class="mt-4 text-gray-700 max-w-2xl">
+          Hosted by the Department of Chemistry, IIT Patna — a collaboration platform where speakers present
+          unsolved research problems and listeners register to propose solutions and collaborate.
+        </p>
+
+        <div class="mt-6 flex flex-wrap gap-3 items-center">
+          <div class="px-4 py-2 rounded-full bg-white/90 border text-sm">
+            Date: <strong>Jan 21–23, 2026</strong>
+          </div>
+          <a href="registration.html"
+             class="inline-block px-5 py-3 rounded text-sm font-semibold hover:scale-[1.02] transition"
+             style="background:#c5941d;color:white;">
+            Register
+          </a>
+          <a href="#mission" class="text-sm text-blue-800 underline">Learn more</a>
         </div>
       </div>
 
-      <div class="relative z-10 max-w-6xl mx-auto px-4 py-12">
-        <div class="flex flex-col md:flex-row items-center gap-8">
-          <div id="hero-content" class="flex-1 transform transition-all duration-600">
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-blue-900 drop-shadow">
-              International Conference on <br class="hidden md:block">Organic & Functional Materials for Light and Energy
-            </h1>
-            <p class="mt-4 text-gray-700 max-w-2xl">
-              Hosted by the Department of Chemistry, IIT Patna — a collaboration platform where speakers present unsolved research problems and listeners register to propose solutions and collaborate.
-            </p>
-            <div class="mt-6 flex flex-wrap gap-3 items-center">
-              <div class="px-4 py-2 rounded-full bg-white/90 border text-sm">Date: <strong>Jan 21–23, 2026</strong></div>
-              <a href="registration.html" class="bg-gold-500 hover:scale-[1.02] transition inline-block px-5 py-3 rounded text-sm font-semibold" style="background:#c5941d;color:white;">Register</a>
-              <a href="#mission" class="text-sm text-blue-800 underline">Learn more</a>
-            </div>
-          </div>
+    </div>
+  </div>
 
-          <div id="hero-logo" class="w-44 h-44 rounded-full bg-blue-800 text-white flex items-center justify-center shadow-xl transition-all duration-500 transform-origin-left">
-            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/52/Indian_Institute_of_Technology%2C_Patna.svg/1200px-Indian_Institute_of_Technology%2C_Patna.svg.png" alt="IIT Patna Logo">
-          </div>
-        </div>
-      </div>
-    </section>
+</section>
+
+
+<!-- ABOUT INSTITUTION -->
+<section id="mission" class="bg-gray-50 py-10">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-4xl font-bold text-blue-900 mb-6">About Our Institution </h2>
+        <p class="mt-2 text-gray-700">
+    The Indian Institute of Technology Patna (IIT Patna) is one of the premier technical institutes of India,
+    established to foster excellence in education, research, and innovation. Located in the vibrant Bihta campus,
+    IIT Patna offers cutting-edge programs in engineering, sciences, and humanities while nurturing a culture of
+    interdisciplinary learning.  
+    The institute is committed to advancing frontier technologies, promoting industry–academia collaboration,
+    and contributing to national development through impactful research and skilled human resource development.
+  </p>
+</section>
+
+
+
 
     <!-- ABOUT DEPARTMENT -->
-    <section id="about" class="max-w-6xl mx-auto px-4 py-12">
-      <h2 class="text-2xl font-bold text-blue-900">About the Department</h2>
-      <p class="mt-3 text-gray-700 leading-relaxed">
-        The Department of Chemistry at IIT Patna focuses on cutting-edge research across organic, materials, and physical chemistry. We foster interdisciplinary work and industry-academia collaboration to address applied problems in energy and light-based materials.
+   
+   <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-4xl font-bold text-blue-900 mb-6">About the Department</h2>
+                        <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+                            The Department of Chemistry at IIT Patna focuses on cutting-edge research across organic, materials, and physical chemistry.
+        We foster interdisciplinary work and industry-academia collaboration to address applied problems in energy and light-based materials.
       </p>
-    </section>
+                    </div>
+                    <div class="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
+                        <img
+                            src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&h=600&fit=crop"
+                            alt="Chemistry Laboratory"
+                            class="w-full h-full object-cover"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
 
     <!-- MISSION -->
     <section id="mission" class="bg-gray-50 py-10">
       <div class="max-w-6xl mx-auto px-4">
-        <h3 class="text-xl font-bold text-blue-900">Our Mission</h3>
+        <h2 class="text-4xl font-bold text-blue-900 mb-6">Our Mission </h2>
         <p class="mt-2 text-gray-700">
-          This conference is a Collaboration Platform: speakers **present unsolved research problems and bottlenecks** (not just success stories). Listeners register as Problem Solvers, propose solutions, and form collaborations. The goal: accelerate actionable solutions and cross-disciplinary teams.
+          This conference is a Collaboration Platform: speakers present unsolved research problems and bottlenecks (not just success stories).
+          Listeners register as Problem Solvers, propose solutions, and form collaborations.
+          The goal is to accelerate actionable solutions and cross-disciplinary teams.
         </p>
       </div>
     </section>
 
-    <!-- Sponsors dynamic grid -->
+    <!-- SPONSORS (dynamic) -->
     <section class="max-w-6xl mx-auto px-4 py-12">
       <div class="flex items-center justify-between">
-        <h3 class="text-xl font-bold text-blue-900">Sponsors</h3>
-        <button id="refresh-sponsors" class="text-sm px-3 py-1 border rounded">Refresh</button>
+       <h2 class="text-4xl font-bold text-blue-900 mb-6">Sponsors </h2>
       </div>
-      <div id="sponsors-grid" class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 items-center">
-        <!-- sponsor logos injected by JS -->
-      </div>
-      <p class="mt-3 text-xs text-gray-500">Editable via Admin / Firestore (see README)</p>
+      <div id="sponsors-grid" class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-8 place-items-center">
+
+      <p class="mt-3 text-xs text-gray-500">
+        Data source: Firebase Firestore (if configured), otherwise local SAMPLE data.
+      </p>
     </section>
 
     <!-- CTA -->
@@ -133,26 +203,42 @@
       <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
         <div>
           <h4 class="text-lg font-bold">Have a research bottleneck?</h4>
-          <p class="text-sm text-blue-100">Register as a Research Speaker and present a problem to form collaborations and find solutions.</p>
+          <p class="text-sm text-blue-100">
+            Register as a Research Speaker and present a problem to form collaborations and find solutions.
+          </p>
         </div>
         <div class="flex gap-3">
-          <a href="registration.html" class="bg-gold-500 px-4 py-2 rounded text-sm font-semibold" style="background:#c5941d;color:white;">Register Now</a>
-          <a href="login.html" class="border px-4 py-2 rounded text-sm">Conference Hall</a>
+          <a
+            href="registration.html"
+            class="px-4 py-2 rounded text-sm font-semibold"
+            style="background:#c5941d;color:white;"
+          >
+            Register Now
+          </a>
+          <a href="login.html" class="border px-4 py-2 rounded text-sm bg-white/0 hover:bg-white/10">
+            Conference Hall
+          </a>
         </div>
       </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="max-w-6xl mx-auto px-4 py-10 text-sm text-gray-600">
-      <div class="flex justify-between">
+      <div class="flex flex-col sm:flex-row justify-between gap-2">
         <div>Department of Chemistry — IIT Patna</div>
         <div>&copy; 2026 ICONFM</div>
       </div>
     </footer>
   </main>
 
-  <!-- Shared scripts -->
-  <script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-firestore-compat.js"></script>
-  <script src="app.js"></script>
+<!-- Firebase v8 SDKs (namespaced API) -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<!-- Your app logic -->
+<script src="app.js"></script>
+
+
+
 </body>
 </html>

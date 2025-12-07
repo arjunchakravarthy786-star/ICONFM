@@ -6,7 +6,7 @@
   ],
   "committee": [
     {"id":"c1","name":"Prof. A. Researcher","role":"Chair","photo":"https://via.placeholder.com/300?text=Prof+A"},
-    {"id":"c2","name":"Dr. B. Scientist","role":"Co-chair","photo":"https://via.placeholder.com/300?text=Dr+B"},
+    {"id":"c2","name":"Dr. Mohan Muralikrishna Garlapati","role":"Co-chair","photo":"https://www.uni-muenster.de/imperia/md/images/zentral/kommunikation/portraets/2024/fittosize_1522_1015_2f17cca5d653394cc49ee9d4ae24c682_garlapati_final.jpg?text=Dr. Mohan Muralikrishna Garlapati"},
     {"id":"c3","name":"Dr. C. Member","role":"Organizing Secretary","photo":"https://via.placeholder.com/300?text=Dr+C"}
   ]
 }

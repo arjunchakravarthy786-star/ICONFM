@@ -7,18 +7,23 @@
    FIREBASE CONFIGURATION
 ====================================================== */
 const FIREBASE_CONFIG = {
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: ""
+  apiKey: "AIzaSyDJbatqsdJ9d0qECRGzAIDNFtIMvwC0tkQ",
+  authDomain: "iconfm-26.firebaseapp.com",
+  projectId: "iconfm-26",
+  storageBucket: "iconfm-26.firebasestorage.app",
+  messagingSenderId: "364335027860",
+  appId: "1:364335027860:web:a6209ff8f499c90dec0681"
 };
+
 
 let useFirestore = false;
 let db = null;
 
-if (FIREBASE_CONFIG.apiKey) {
+if (!FIREBASE_CONFIG.apiKey) {
+  console.warn("Firebase config missing — running on sample data only.");
+} else if (typeof firebase === "undefined") {
+  console.warn("Firebase SDK not loaded — check script tags. Running on sample data only.");
+} else {
   try {
     firebase.initializeApp(FIREBASE_CONFIG);
     db = firebase.firestore();
@@ -27,22 +32,23 @@ if (FIREBASE_CONFIG.apiKey) {
   } catch (e) {
     console.warn("Firebase init failed:", e);
   }
-} else {
-  console.warn("Firebase config missing — running on sample data only.");
 }
+
+
+
 
 /* ---------- SAMPLE DATA (Local fallback) ---------- */
 const SAMPLE = {
   sponsors: [
-    {id:'s1', name:'Govt Lab', logo:'https://via.placeholder.com/200x80?text=Govt+Lab'},
-    {id:'s2', name:'Materials Co', logo:'https://via.placeholder.com/200x80?text=Materials+Co'},
-    {id:'s3', name:'Photonics Inc', logo:'https://via.placeholder.com/200x80?text=Photonics'},
+    {id:'s1', name:'Govt Lab',        logo:'https://dummyimage.com/200x80/cccccc/000000&text=Govt+Lab'},
+    {id:'s2', name:'Materials Co',    logo:'https://dummyimage.com/200x80/cccccc/000000&text=Materials+Co'},
+    {id:'s3', name:'Photonics Inc',   logo:'https://dummyimage.com/200x80/cccccc/000000&text=Photonics'},
   ],
-  committee: [
-    {id:'c1', name:'Prof. A. Researcher', role:'Chair', photo:'https://via.placeholder.com/300?text=Prof+A'},
-    {id:'c2', name:'Dr. B. Scientist', role:'Co-chair', photo:'https://via.placeholder.com/300?text=Dr+B'},
-    {id:'c3', name:'Dr. C. Member', role:'Organizing Secretary', photo:'https://via.placeholder.com/300?text=Dr+C'}
-  ],
+committee: [
+  {id:'c1', name:'Prof. A. Researcher', role:'Chairperson',   photo:'https://...', order: 1},
+  {id:'c2', name:'Dr. Mohan ...',       role:'Co-chairperson', photo:'https://...', order: 2},
+  {id:'c3', name:'Dr. C. Member',       role:'Coordinator',    photo:'https://...', order: 3}
+],
   registrations: [],
   problems: [
     {id:'p1', title:'Low quantum yield in polymer LEDs', summary:'Scale-up issues in light-emitting polymer devices.', presenter:'Prof. A'},
@@ -68,36 +74,79 @@ async function loadCommittee() {
   const grid = el("#committee-grid");
   if (!grid) return;
 
-  grid.innerHTML = `<div class="col-span-full text-gray-500 text-sm">Loading...</div>`;
+  grid.innerHTML = `<div class="text-gray-500 text-sm">Loading...</div>`;
 
   let items = [];
+
   if (useFirestore) {
     try {
-      const snap = await db.collection("committee").get();
-      items = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
-    } catch (e) {
-      console.warn(e);
+      const snap = await db.collection("committee").orderBy("order").get();
+      items = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    } catch (err) {
+      console.warn(err);
       items = SAMPLE.committee;
     }
   } else {
-    items = SAMPLE.committee;
+    items = SAMPLE.committee.sort((a, b) => (a.order || 99) - (b.order || 99));
   }
 
-  grid.innerHTML = "";
-  items.forEach((c) => {
-    const card = document.createElement("div");
-    card.className = "p-4 border rounded flex gap-4 items-center";
-
-    card.innerHTML = `
-      <img src="${c.photo}" alt="${safe(c.name)}" class="w-20 h-20 object-cover rounded-full">
-      <div>
-        <div class="font-semibold">${safe(c.name)}</div>
-        <div class="text-sm text-gray-600">${safe(c.role)}</div>
-      </div>
-    `;
-    grid.appendChild(card);
+  // GROUP BY ROLE ORDER
+  const groups = { 1: [], 2: [], 3: [] };
+  items.forEach(m => {
+    const rank = m.order || 99;
+    if (!groups[rank]) groups[rank] = [];
+    groups[rank].push(m);
   });
+
+  grid.innerHTML = "";
+
+  function renderSection(title, members) {
+    if (!members.length) return;
+
+    const section = document.createElement("div");
+    section.className = "space-y-5";
+
+    section.innerHTML = `
+      <h2 class="text-2xl font-bold text-blue-900">${title}</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    `;
+
+    const row = section.querySelector("div.grid");
+
+    members.forEach(m => {
+      const card = document.createElement("div");
+      card.className =
+        "bg-white border rounded-xl shadow-md p-4 flex gap-4 items-center hover:shadow-lg transition";
+
+      card.innerHTML = `
+        <img 
+          src="${m.photo}" 
+          alt="${safe(m.name)}"
+          class="w-28 h-28 object-cover rounded-lg border"
+        >
+
+        <div class="flex-1">
+          <div class="text-lg font-semibold">${safe(m.name)}</div>
+          <div class="text-gray-600 text-sm mt-1">${safe(m.role)}</div>
+        </div>
+      `;
+
+      row.appendChild(card);
+    });
+
+    grid.appendChild(section);
+  }
+
+  renderSection("Chairperson", groups[1]);
+  renderSection("Co-chairperson", groups[2]);
+  renderSection("Coordinators", groups[3]);
 }
+
+
+
+
+
+
 
 /* ======================================================
    SPONSORS RENDERING
@@ -113,8 +162,9 @@ async function loadSponsors() {
     try {
       const snap = await db.collection("sponsors").get();
       sponsors = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+      console.log("Sponsors from Firestore:", sponsors);
     } catch (e) {
-      console.warn(e);
+      console.warn("Error loading sponsors:", e);
       sponsors = SAMPLE.sponsors;
     }
   } else {
@@ -124,12 +174,26 @@ async function loadSponsors() {
   container.innerHTML = "";
   sponsors.forEach((s) => {
     const item = document.createElement("div");
-    item.className =
-      "flex items-center justify-center bg-white p-4 border rounded-lg shadow-sm hover:shadow-md transition";
-    item.innerHTML = `<img src="${s.logo}" alt="${safe(s.name)} logo" class="max-h-14 object-contain">`;
+   item.className =
+  "bg-white p-5 border rounded-2xl shadow hover:shadow-lg transition flex flex-col items-center w-full max-w-xs";
+
+
+    item.innerHTML = `
+      <img 
+        src="${s.logo}" 
+        alt="${safe(s.name)} logo" 
+        class="w-full h-48 object-contain mb-3"
+      >
+      <div class="text-center text-sm font-medium text-gray-800">
+        ${safe(s.name)}
+      </div>
+    `;
+
     container.appendChild(item);
   });
 }
+
+
 
 /* ======================================================
    MOBILE NAVBAR (Hamburger)
@@ -184,7 +248,10 @@ function initRegistration() {
         try {
           await db.collection('registrations').add(data);
           modalBody.textContent = 'Saved to Firestore. Registration Successful.';
-        } catch(e){ SAMPLE.registrations.push(data); modalBody.textContent = 'Saved locally.'; }
+        } catch(e){
+          SAMPLE.registrations.push(data);
+          modalBody.textContent = 'Saved locally.';
+        }
       } else {
         SAMPLE.registrations.push(data);
         modalBody.textContent = 'Saved locally (demo).';
@@ -224,11 +291,17 @@ function checkHallAccess() {
   const locked = el('#locked-warning');
   const hall = el('#hall-content');
   if(!hall) return;
-  if(!token){ locked.classList.remove('hidden'); hall.classList.add('hidden'); }
-  else { locked.classList.add('hidden'); hall.classList.remove('hidden'); loadHallData(); }
+  if(!token){
+    locked.classList.remove('hidden');
+    hall.classList.add('hidden');
+  } else {
+    locked.classList.add('hidden');
+    hall.classList.remove('hidden');
+    loadHallData();
+  }
 
   const logoutBtn = el('#logout-btn');
-  if(logoutBtn) logoutBtn.addEventListener('click', ()=> {
+  if(logoutBtn) logoutBtn.addEventListener('click', ()=>{
     localStorage.removeItem('iconfm_user');
     window.location.href = 'login.html';
   });
@@ -274,7 +347,10 @@ async function loadHallData() {
   const collabForm = el('#collab-form');
   const collabCancel = el('#collab-cancel');
   if(collabBtn && collabModal){
-    collabBtn.addEventListener('click', ()=> { collabModal.classList.remove('hidden'); collabModal.querySelector('input,textarea')?.focus(); });
+    collabBtn.addEventListener('click', ()=>{
+      collabModal.classList.remove('hidden');
+      collabModal.querySelector('input,textarea')?.focus();
+    });
   }
   if(collabCancel) collabCancel.addEventListener('click', ()=> collabModal.classList.add('hidden'));
   if(collabForm){
@@ -284,8 +360,14 @@ async function loadHallData() {
       const message = el('#collab-message').value;
       const post = {name, message, createdAt:new Date().toISOString()};
       if(useFirestore && db){
-        try{ await db.collection('collabs').add(post); } catch(e){ SAMPLE.collabs.unshift(post); }
-      } else SAMPLE.collabs.unshift(post);
+        try{
+          await db.collection('collabs').add(post);
+        } catch(e){
+          SAMPLE.collabs.unshift(post);
+        }
+      } else {
+        SAMPLE.collabs.unshift(post);
+      }
       collabModal.classList.add('hidden');
       loadHallData();
     });
@@ -332,25 +414,33 @@ async function loadInsights() {
 }
 
 /* ======================================================
-   HERO SCROLL TRANSFORM
+   HERO SLIDER (AUTO IMAGE SWITCH)
 ====================================================== */
-function initHeroTransform() {
-  const heroLogo = el('#hero-logo');
-  const heroContent = el('#hero-content');
-  if(!heroLogo) return;
-  window.addEventListener('scroll', ()=>{
-    const sc = window.scrollY;
-    if(sc>120){
-      heroLogo.classList.add('shrink');
-      heroContent?.classList.add('shrift');
-      el('#mini-logo')?.classList.add('hidden');
-    } else {
-      heroLogo.classList.remove('shrink');
-      heroContent?.classList.remove('shrift');
-      el('#mini-logo')?.classList.remove('hidden');
-    }
+function initHeroSlider() {
+  const slider = document.querySelector('#hero-slider');
+  if (!slider) return;
+
+  const slides = Array.from(slider.children);
+  const count = slides.length;
+
+  if (count === 0) return;
+
+  // Each slide = 100% width
+  slides.forEach(slide => {
+    slide.style.flex = '0 0 100%';
   });
+
+  slider.style.width = `${count * 100}%`;
+
+  let index = 0;
+
+  setInterval(() => {
+    index = (index + 1) % count;
+    slider.style.transform = `translateX(-${index * 100}%)`;
+  }, 3500); // smooth 3.5 sec
 }
+
+
 
 /* ======================================================
    PAGE INIT
@@ -359,7 +449,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
   loadSponsors();
   loadCommittee();
   initMobileMenu();
-  initHeroTransform();
+  initHeroSlider();
+  highlightActiveNav();
+
   if(el('#reg-form')) initRegistration();
   if(el('#login-form')) initLogin();
   if(el('#hall-content')) checkHallAccess();

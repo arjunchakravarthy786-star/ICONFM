@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Insights & Outcomes — ICONFM</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="styles.css">
+   <!-- Use built Tailwind CSS -->
+  <link rel="stylesheet" href="dist/output.css">
 <!-- NAVIGATION BAR -->
 <header class="fixed w-full z-40 bg-white/90 backdrop-blur-sm border-b shadow-sm">
   <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -25,10 +25,7 @@
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9-1.5 1.5L12 5 4.5 13.5z"/><path d="M12 22V12h4v10h-4zm-4 0V12h4v10H8z"/></svg>
         <span>Home</span>
       </a>
-      <a href="committee.html" class="nav-link flex items-center gap-1 px-3 py-2 rounded hover:bg-blue-600 hover:text-white">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M16 11a4 4 0 100-8 4 4 0 000 8zM4 11a4 4 0 100-8 4 4 0 000 8zM4 13a6 6 0 00-6 6v2h14v-2a6 6 0 00-6-6zm12 0a6 6 0 016 6v2h-6v-2a6 6 0 00-6-6h6z"/></svg>
-        <span>Committee</span>
-      </a>
+     
       <a href="insights.html" class="nav-link flex items-center gap-1 px-3 py-2 rounded hover:bg-blue-600 hover:text-white">
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4 12h2v8H4v-8zm6-4h2v12h-2V8zm6-6h2v18h-2V2z"/></svg>
         <span>Outcomes</span>
@@ -36,6 +33,10 @@
       <a href="registration.html" class="nav-link flex items-center gap-1 px-3 py-2 bg-blue-800 text-white rounded hover:scale-[1.02] transition">
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M15 12h6m-3-3v6M7 6a4 4 0 110 8 4 4 0 010-8zM3 21v-2a4 4 0 014-4h4"/></svg>
         <span>Register</span>
+      </a>
+       <a href="committee.html" class="nav-link flex items-center gap-1 px-3 py-2 rounded hover:bg-blue-600 hover:text-white">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M16 11a4 4 0 100-8 4 4 0 000 8zM4 11a4 4 0 100-8 4 4 0 000 8zM4 13a6 6 0 00-6 6v2h14v-2a6 6 0 00-6-6zm12 0a6 6 0 016 6v2h-6v-2a6 6 0 00-6-6h6z"/></svg>
+        <span>Committee</span>
       </a>
       <a href="login.html" class="nav-link flex items-center gap-1 px-3 py-2 border rounded hover:bg-blue-600 hover:text-white">
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17 10.5v3l4 3V7.5l-4 3z"/><path d="M3 5a2 2 0 012-2h10a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"/></svg>
@@ -54,10 +55,11 @@
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-2 bg-white border-t">
     <a href="index.html" class="block px-3 py-2 rounded hover:bg-blue-100">Home</a>
-    <a href="committee.html" class="block px-3 py-2 rounded hover:bg-blue-100">Committee</a>
     <a href="insights.html" class="block px-3 py-2 rounded hover:bg-blue-100">Outcomes</a>
     <a href="registration.html" class="block px-3 py-2 rounded bg-blue-800 text-white">Register</a>
+   
     <a href="login.html" class="block px-3 py-2 rounded border hover:bg-blue-100">Conference Hall</a>
+     <a href="committee.html" class="block px-3 py-2 rounded hover:bg-blue-100">Committee</a>
   </div>
 </header>
 
@@ -89,8 +91,12 @@
   </div>
 </main>
 
-<script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-firestore-compat.js"></script>
+<!-- Firebase v8 SDKs (namespaced API) -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<!-- Your app logic -->
 <script src="app.js"></script>
+
 </body>
 </html>
